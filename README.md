@@ -30,7 +30,27 @@ STEP-8: Repeat the above steps to generate the entire cipher text.
 
 
 ## PROGRAM
-
+~~~
+def vigenere_cipher(text, key, decrypt=False):
+    result = []
+    key_len = len(key)
+    for i, char in enumerate(text):
+        shift = ord(key[i % key_len]) - ord('A')
+        if decrypt:
+            shift = 26 - shift
+        new_char = chr((ord(char) - ord('A') + shift) % 26 + ord('A'))
+        result.append(new_char)
+    return "".join(result)
+text = input("Enter text (UPPERCASE only): ")
+key = input("Enter key (UPPERCASE only): ")
+encrypted = vigenere_cipher(text, key, decrypt=False)
+print("Encrypted Message:", encrypted)
+decrypted = vigenere_cipher(encrypted, key, decrypt=True)
+print("Decrypted Message:", decrypted)
+~~~
 ## OUTPUT
+<img width="1920" height="1200" alt="Screenshot (56)" src="https://github.com/user-attachments/assets/fa94eb48-c51e-410b-9c59-fd69f7b273f1" />
 
 ## RESULT
+
+Thus the program executed successfully
